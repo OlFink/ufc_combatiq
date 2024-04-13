@@ -16,7 +16,7 @@ allow_docker_push:
 create_artifacts_repo:
 	gcloud artifacts repositories create $$ARTIFACTSREPO --repository-format=docker --location=$$GCP_REGION --description="Repository for storing the docker container"
 
-Step 3
+# Step 3
 build_for_production:
 	docker build -t $$GCP_REGION-docker.pkg.dev/$$GCP_PROJECT/$$ARTIFACTSREPO/$$IMAGE:prod .
 
