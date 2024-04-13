@@ -36,7 +36,8 @@ background_image = """
 st.markdown(background_image, unsafe_allow_html=True)
 
 # URL of  FastAPI endpoint
-api_url = "https://mvp-ef5u7jst5q-ew.a.run.app/predict"
+#api_url = "https://mvp-ef5u7jst5q-ew.a.run.app/predict"
+api_url = "http://localhost:8080/predict"
 
 
 # Load the CSV file
@@ -86,8 +87,8 @@ if st.button("Predict Winner"):
     if response.status_code == 200:
         prediction_data = response.json()
         fight_outcome = prediction_data['fight_outcome']
-        win_rate = prediction_data['win_rate']
-        st.markdown(f"<b><span style='color: white;'>The predicted winner is: {fight_outcome}</span></b> ", unsafe_allow_html=True)
-        st.markdown(f"<b><span style='color: white;'>Win rate: {win_rate}</span></b>", unsafe_allow_html=True)
+        win_rate = prediction_data['confidence_rate']
+        st.markdown(f"<b><span style='color: red;'>The predicted winner is: {fight_outcome}</span></b> ", unsafe_allow_html=True)
+        st.markdown(f"<b><span style='color: red;'>Confidence rate: {win_rate}</span></b>", unsafe_allow_html=True)
     else:
         st.write("Failed to get prediction from the API")
