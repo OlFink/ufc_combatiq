@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 import pickle
 import pandas as pd
-import umpy as np
+import numpy as np
 from combat_iq.ml_logic.preprocessors import preprocessed_df
 
 app = FastAPI()
